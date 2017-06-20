@@ -1,0 +1,6 @@
+{
+    "mysql-user": "root",
+    "mysql-pass": "devpass",
+    "mysql-database": "go_rate_me_api",
+    "server-port": 8020
+}
