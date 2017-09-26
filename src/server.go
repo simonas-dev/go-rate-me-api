@@ -23,16 +23,21 @@ type Rating struct {
 
 func main() {
   config, err := ioutil.ReadFile("./config.json")
-
-  mysql_user, _ := jsonparser.GetString(config, "mysql-user")
-  mysql_pass, _ := jsonparser.GetString(config, "mysql-pass")
-  mysql_database, _ := jsonparser.GetString(config, "mysql-database")
-  server_port, _ := jsonparser.GetInt(config, "server-port")
-
   if (err != nil) {
     fmt.Println(err)
     return
   }
+
+  mysql_user, _ := jsonparser.GetString(config, "mysql-user")
+  fmt.Println("mysql_user: ", mysql_user)
+  
+  mysql_pass, _ := jsonparser.GetString(config, "mysql-pass")
+
+  mysql_database, _ := jsonparser.GetString(config, "mysql-database")
+  fmt.Println("mysql_database: ", mysql_database)
+  
+  server_port, _ := jsonparser.GetInt(config, "server-port")
+  fmt.Println("server_port: ", server_port)
 
   // Init Web Server
   macaron.Env = macaron.PROD
@@ -62,5 +67,5 @@ func main() {
     return "Ok"
   })
 
-  m.Run("0.0.0.0", server_port)
+  m.Run("0.0.0.0", int(server_port))
 }

@@ -1,2 +1,2 @@
-nohup ../bin/server  &
+nohup ./bin/server  &
 
