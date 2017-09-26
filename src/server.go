@@ -9,6 +9,7 @@ import(
   "github.com/buger/jsonparser"
   "io/ioutil"
   "fmt"
+  "flag"
 )
 
 type Rating struct {
@@ -22,7 +23,10 @@ type Rating struct {
 }
 
 func main() {
-  config, err := ioutil.ReadFile("./config.json")
+  file_path := flag.String("config", "./config.json", "Path to config.json file.")
+  flag.Parse()
+
+  config, err := ioutil.ReadFile(*file_path)
   if (err != nil) {
     fmt.Println(err)
     return
