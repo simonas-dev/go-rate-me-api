@@ -41,7 +41,7 @@ func main() {
   m.Use(pongo2.Pongoer())
 
   // Init Database ORM
-  connection_params := mysql_user + ":" + mysql_pass + "@/" + mysql_database + "?charset=utf8&parseTime=True&loc=Local"
+  connection_params := fmt.Sprintf("%s:%s@/%s?charset=utf8&parseTime=True&loc=Local", mysql_user, mysql_pass, mysql_database)
   db, err := gorm.Open("mysql", connection_params)
   
   if err != nil {
